@@ -24,6 +24,10 @@ public class OddOccurrencesInArray {
         return result;
     }
 
+    /*pierwsze rozwiązanie przeszło 100% efektywności,
+    * wcześniej zaczyanłam od stremów, ale wiem, że są wolniejsze,
+    * ale tiem w nano seconds wychodził krótszy - nie rozumiem tego*/
+
     public static int solution2(int[] tab) {
         List<Integer> list = Arrays.stream(tab).boxed().collect(Collectors.toList());
         return list.stream()
