@@ -25,8 +25,8 @@ public class OddOccurrencesInArray {
     }
 
     /*pierwsze rozwiązanie przeszło 100% efektywności,
-    * wcześniej zaczyanłam od stremów, ale wiem, że są wolniejsze,
-    * ale tiem w nano seconds wychodził krótszy - nie rozumiem tego*/
+     * wcześniej zaczyanłam od stremów, ale wiem, że są wolniejsze,
+     * ale tiem w nano seconds wychodził krótszy - nie rozumiem tego*/
 
     public static int solution2(int[] tab) {
         List<Integer> list = Arrays.stream(tab).boxed().collect(Collectors.toList());
@@ -39,14 +39,14 @@ public class OddOccurrencesInArray {
     public static void main(String[] args) {
         int[] a = new int[]{1, 2, 1, 4, 2, 0, 4, 0, 7};
 
-        long startTime=System.nanoTime();
+        long startTime = System.nanoTime();
         System.out.println("Solution1: " + solution1(a));
-        long endTime=System.nanoTime();
-        System.out.println(endTime-startTime);
+        long endTime = System.nanoTime();
+        System.out.println(endTime - startTime);
 
-        long startTime2=System.nanoTime();
+        long startTime2 = System.nanoTime();
         System.out.println("Solution2: " + solution2(a));
-        long endTime2=System.nanoTime();
-        System.out.println(endTime2-startTime2);
+        long endTime2 = System.nanoTime();
+        System.out.println(endTime2 - startTime2);
     }
 }

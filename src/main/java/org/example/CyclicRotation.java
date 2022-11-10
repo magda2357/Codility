@@ -19,6 +19,7 @@ public class CyclicRotation {
 
     public static void main(String[] args) {
         int[] a = new int[]{1, 2, 3, 4, 5};
+
         System.out.println("Przed przesunięciami: " + Arrays.toString(a));
         System.out.println("Po przesunięciach: " + Arrays.toString(solution(a, 2)));
     }

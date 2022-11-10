@@ -25,7 +25,7 @@ public class BinaryGap {
     }
 
     public static void main(String[] args) {
-        int test=126567157;
+        int test = 126567157;
         System.out.println(Integer.toBinaryString(test));
         System.out.println(countMaxBinaryGap(test));
     }
