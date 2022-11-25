@@ -2,6 +2,8 @@ package org.example;
 
 import java.util.Arrays;
 
+import static java.lang.Math.max;
+
 public class MaxCounters {
     public static int[] countMax(int n, int[] arr) {
 
@@ -11,10 +13,8 @@ public class MaxCounters {
         for (int j : arr) {
 
             if (j <= n) {
-                if (result[j - 1] > max) {
-                    max = result[j - 1];
-                }
                 result[j - 1] += 1;
+                max = max(result[j - 1], max);
             } else {
                 Arrays.fill(result, max);
             }
@@ -26,13 +26,14 @@ public class MaxCounters {
     public static int[] countMax2(int n, int[] arr) {
 
         int[] result = new int[n];
-
+        int max = 0;
         for (int j : arr) {
 
             if (j <= n) {
                 result[j - 1] += 1;
+                max = max(result[j - 1], max);
             } else {
-                Arrays.fill(result, Arrays.stream(result).max().getAsInt());
+                Arrays.fill(result, max);
             }
 
         }
