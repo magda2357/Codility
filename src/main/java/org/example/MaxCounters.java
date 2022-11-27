@@ -9,16 +9,16 @@ public class MaxCounters {
 
         int[] result = new int[n];
         int max = 0;
+        int len = arr.length;
 
-        for (int j : arr) {
+        for (int i = 1; i < len; i++) {
 
-            if (j <= n) {
-                result[j - 1] += 1;
-                max = max(result[j - 1], max);
+            if (arr[i] <= n) {
+                result[arr[i] - 1] += 1;
+                max = max(result[arr[i] - 1], max);
             } else {
                 Arrays.fill(result, max);
             }
-
         }
         return result;
     }
@@ -40,14 +40,25 @@ public class MaxCounters {
         return result;
     }
 
+    public static int[] produceRandomeArray(int range, int size) {
+        int[] array = new int[size];
+        for (int i = 0; i < array.length; i++) {
+            array[i] = (int) (Math.random() * range + 1);
+        }
+        return array;
+    }
+
     public static void main(String[] args) {
+
+        int[] array = produceRandomeArray(100, 100000);
+
         long startTime = System.nanoTime();
-        System.out.println(Arrays.toString(countMax(5, new int[]{3, 4, 4, 6, 1, 4, 4})));
+        System.out.println(Arrays.toString(countMax(90, array)));
         long endTime = System.nanoTime();
         System.out.println(endTime - startTime);
 
         long startTime2 = System.nanoTime();
-        System.out.println(Arrays.toString(countMax2(5, new int[]{3, 4, 4, 6, 1, 4, 4})));
+        System.out.println(Arrays.toString(countMax2(90, array)));
         long endTime2 = System.nanoTime();
         System.out.println(endTime2 - startTime2);
 
