@@ -7,66 +7,73 @@ import static java.lang.Math.max;
 public class MaxCounters {
     public static int[] countMax(int n, int[] arr) {
 
+        System.out.println(Arrays.toString(arr));
+
         int[] result = new int[n];
         int max = 0;
-        int len = arr.length;
+        int max_fin = 0;
+        for (int j : arr) {
 
-        for (int i = 1; i < len; i++) {
-
-            if (arr[i] <= n) {
-                result[arr[i] - 1] += 1;
-                max = max(result[arr[i] - 1], max);
+            if (j <= n) {
+                if (result[j - 1] <= max_fin) {
+                    result[j - 1] = max_fin;
+                }
+                result[j - 1] += 1;
+                if (result[j - 1] > max) {
+                    max = result[j - 1];
+                }
             } else {
-                Arrays.fill(result, max);
+                max_fin = max;
             }
+            System.out.println(Arrays.toString(result) + " max: " + max + " fin_max: " + max_fin);
+        }
+
+        for (int i = 0; i < n; i++) {
+            result[i] = max(max_fin, result[i]);
         }
         return result;
     }
 
     public static int[] countMax2(int n, int[] arr) {
-
         int[] result = new int[n];
         int max = 0;
+
         for (int j : arr) {
 
             if (j <= n) {
+                if (result[j - 1] > max) {
+                    max = result[j - 1];
+                }
                 result[j - 1] += 1;
                 max = max(result[j - 1], max);
             } else {
                 Arrays.fill(result, max);
             }
-
         }
         return result;
     }
 
-    public static int[] produceRandomeArray(int range, int size) {
-        int[] array = new int[size];
-        for (int i = 0; i < array.length; i++) {
-            array[i] = (int) (Math.random() * range + 1);
-        }
-        return array;
-    }
 
     public static void main(String[] args) {
 
-        int[] array = produceRandomeArray(100, 100000);
-
-        long startTime = System.nanoTime();
-        System.out.println(Arrays.toString(countMax(90, array)));
-        long endTime = System.nanoTime();
-        System.out.println(endTime - startTime);
-
-        long startTime2 = System.nanoTime();
-        System.out.println(Arrays.toString(countMax2(90, array)));
-        long endTime2 = System.nanoTime();
-        System.out.println(endTime2 - startTime2);
-
-
+        //Regular tests - MaxCount 100%, MaxCount2 77% effective
+        System.out.println(Arrays.toString(countMax(10, new int[]{3, 6, 4, 12, 13, 4, 4, 3, 3, 11, 3, 3, 6, 1})));
+        System.out.println(Arrays.toString(countMax2(10, new int[]{3, 6, 4, 12, 13, 4, 4, 3, 3, 11, 3, 3, 6, 1})));
+        System.out.println();
+        System.out.println(Arrays.toString(countMax(5, new int[]{3, 4, 4, 6, 1, 4, 4})));
+        System.out.println(Arrays.toString(countMax2(5, new int[]{3, 4, 4, 6, 1, 4, 4})));
+        System.out.println();
         System.out.println(Arrays.toString(countMax(2, new int[]{1, 3})));
+        System.out.println(Arrays.toString(countMax2(2, new int[]{1, 3})));
+        System.out.println();
         System.out.println(Arrays.toString(countMax(1, new int[]{1})));
+        System.out.println(Arrays.toString(countMax2(1, new int[]{1})));
+        System.out.println();
         System.out.println(Arrays.toString(countMax(1, new int[]{2, 1})));
+        System.out.println(Arrays.toString(countMax2(1, new int[]{2, 1})));
+        System.out.println();
         System.out.println(Arrays.toString(countMax(1, new int[]{1, 2})));
+        System.out.println(Arrays.toString(countMax2(1, new int[]{1, 2})));
     }
 
 }
