@@ -8,8 +8,9 @@ public class MinAvgTwoSliceTest {
 
     @Test
     public void testAverage() {
-        assertEquals(1, MinAvgTwoSlice.average(new int[]{4, 2, 2, 5, 1, 5, 8}));
-        assertEquals(4, MinAvgTwoSlice.average(new int[]{-4, 4, -2, 2, 2, -5, 5}));
+//        assertEquals(1, MinAvgTwoSlice.average(new int[]{4, 2, 2, 5, 1, 5, 8}));
+        assertEquals(4, MinAvgTwoSlice.average(new int[]{-3, -5, -8, -4, -10}));
+//        assertEquals(4, MinAvgTwoSlice.average(new int[]{-4, 4, -2, 2, 2, -5, 5}));
     }
 
 }
